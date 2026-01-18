@@ -139,6 +139,40 @@
 
 ---
 
+## Review Endpoints
+
+### Create Review
+- **Endpoint**: `POST /reviews`
+- **Description**: Create a new product review
+- **Authentication**: Protected (requires user token)
+- **Headers**: `Authorization: Bearer <user_token>`
+- **Request Body**:
+  ```json
+  {
+    "product": "ObjectId",
+    "rating": "number (1-5)",
+    "comment": "string"
+  }
+  ```
+
+### Get Product Reviews
+- **Endpoint**: `GET /reviews/product/:productId`
+- **Description**: Retrieve all reviews for a specific product
+- **Authentication**: Public (No token required)
+- **Response**: Array of review objects with user names
+
+### Update Review
+- **Endpoint**: `PUT /reviews/:reviewId`
+- **Description**: Update an existing review
+- **Authentication**: Protected (user can only update their own reviews)
+- **Headers**: `Authorization: Bearer <user_token>`
+
+### Delete Review
+- **Endpoint**: `DELETE /reviews/:reviewId`
+- **Description**: Delete a review
+- **Authentication**: Protected (user can only delete their own reviews)
+- **Headers**: `Authorization: Bearer <user_token>`
+
 ## Category Endpoints
 
 ### Get All Categories

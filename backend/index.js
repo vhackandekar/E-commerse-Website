@@ -8,6 +8,7 @@ const MongoStore = require('connect-mongo').default;
 const authRoute = require('./routes/auth');
 const productRoute = require('./routes/product');
 const categoryRoute = require('./routes/category');
+const reviewRoute = require('./routes/review');
 
 dotenv.config();
 
@@ -62,6 +63,7 @@ app.use((req, res, next) => {
 app.use('/api/auth', authRoute);
 app.use('/api/products', productRoute);
 app.use('/api/categories', categoryRoute);
+app.use('/api/reviews', reviewRoute);
 
 app.get('/', (req, res) => {
   res.send("hii");
