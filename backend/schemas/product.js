@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+
 const productSchema = new Schema({
     name: {
         type: String,
@@ -47,6 +48,42 @@ const productSchema = new Schema({
     salesCount: {
         type: Number,
         default: 0
+    },
+    
+    // Rating system
+    averageRating: {
+        type: Number,
+        default: 0,
+        min: 0,
+        max: 5
+    },
+    totalReviews: {
+        type: Number,
+        default: 0
+    },
+    
+    // Enhanced discount information for frontend display
+    discountInfo: {
+        isActive: {
+            type: Boolean,
+            default: false
+        },
+        percentage: {
+            type: Number,
+            min: 0,
+            max: 100
+        },
+        amount: {
+            type: Number,
+            default: 0
+        },
+        savings: {
+            type: Number,
+            default: 0
+        },
+        endTime: {
+            type: Date
+        }
     },
     createdAt: {
         type: Date,
