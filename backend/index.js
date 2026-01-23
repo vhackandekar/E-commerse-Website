@@ -16,12 +16,13 @@ dotenv.config();
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URL);
-
+    console.log("connected to Mongo Db")
     
     // Run product data initialization
     const initializeProductData = require('./initializeProductData');
     initializeProductData();
   } catch (error) {
+    console.error("Failed to connect",error)
 
   }
 };
@@ -32,7 +33,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(cors({
-  origin: ["http://localhost:3000", "http://localhost:5173"], // frontend URLs
+  origin: ["http://localhost:3000", "http://localhost:5173", "http://localhost:5174", "http://localhost:5175"], // frontend URLs
   credentials: true
 }));
 

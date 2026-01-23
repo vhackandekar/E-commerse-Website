@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -27,16 +28,16 @@ const Navbar = () => {
           <nav className="container mx-auto px-4 py-4 flex items-center justify-between gap-8">
             
             {/* Logo */}
-            <a href="/" className="text-2xl font-bold text-black tracking-wider">
+            <Link to="/" className="text-2xl font-bold text-black tracking-wider">
               Exclusive
-            </a>
+            </Link>
 
             {/* Desktop Links */}
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#home" className="text-black text-sm font-medium border-b-2 border-transparent hover:border-black transition-all pb-1">Home</a>
-              <a href="#contact" className="text-black text-sm font-medium border-b-2 border-transparent hover:border-black transition-all pb-1">Contact</a>
-              <a href="#about" className="text-black text-sm font-medium border-b-2 border-transparent hover:border-black transition-all pb-1">About</a>
-              <a href="#signup" className="text-black text-sm font-medium border-b-2 border-transparent hover:border-black transition-all pb-1">Sign Up</a>
+              <Link to="/" className="text-black text-sm font-medium border-b-2 border-transparent hover:border-black transition-all pb-1">Home</Link>
+              <Link to="/contact" className="text-black text-sm font-medium border-b-2 border-transparent hover:border-black transition-all pb-1">Contact</Link>
+              <Link to="/about" className="text-black text-sm font-medium border-b-2 border-transparent hover:border-black transition-all pb-1">About</Link>
+              <Link to="/signup" className="text-black text-sm font-medium border-b-2 border-transparent hover:border-black transition-all pb-1">Sign Up</Link>
             </div>
 
             {/* Right Section: Search & Icons */}
@@ -80,10 +81,10 @@ const Navbar = () => {
           {menuOpen && (
             <div className="md:hidden bg-white border-t border-gray-200 absolute w-full left-0 top-full shadow-lg">
               <div className="flex flex-col space-y-4 p-6">
-                <a href="#home" className="text-black font-medium hover:text-red-600">Home</a>
-                <a href="#contact" className="text-black font-medium hover:text-red-600">Contact</a>
-                <a href="#about" className="text-black font-medium hover:text-red-600">About</a>
-                <a href="#signup" className="text-black font-medium hover:text-red-600">Sign Up</a>
+                <Link to="/" className="text-black font-medium hover:text-red-600">Home</Link>
+                <Link to="/contact" className="text-black font-medium hover:text-red-600">Contact</Link>
+                <Link to="/about" className="text-black font-medium hover:text-red-600">About</Link>
+                <Link to="/signup" className="text-black font-medium hover:text-red-600">Sign Up</Link>
                 <div className="relative">
                      <input
                       type="text"

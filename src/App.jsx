@@ -1,15 +1,29 @@
 import React from "react";
 import { Routes, Route } from 'react-router-dom';
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
+import Home from "./components/Home";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import AllProducts from "./components/AllProducts";
+import AllFlashSales from "./components/AllFlashSales";
+import AllBestSellers from "./components/AllBestSellers";
+import CategoryDetail from "./components/CategoryDetail";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <div className="App font-sans text-black">
       <Navbar />
-      <Hero />
-
-      
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/all-products" element={<AllProducts />} />
+        <Route path="/flash-sales" element={<AllFlashSales />} />
+        <Route path="/best-sellers" element={<AllBestSellers />} />
+        <Route path="/category/:id" element={<CategoryDetail />} />
+      </Routes>
+      <Footer />
     </div>
   );
 }
