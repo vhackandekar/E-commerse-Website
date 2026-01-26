@@ -10,6 +10,8 @@ import AllBestSellers from "./components/AllBestSellers";
 import ProductDetail from "./components/ProductDetail";
 import CategoryDetail from "./components/CategoryDetail";
 import CategoryProducts from "./components/CategoryProducts";
+import Checkout from "./components/Checkout";
+import Cart from "./components/Cart";
 import Footer from "./components/Footer";
 
 function App() {
@@ -26,6 +28,9 @@ function App() {
         <Route path="/category/:id" element={<CategoryDetail />} />
         <Route path="/categories/:categoryId/products" element={<CategoryProducts />} />
         <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/checkout/:id" element={<Checkout />} />
+        <Route path="/cart" element={<Cart />} />
+
       </Routes>
       <Footer />
     </div>

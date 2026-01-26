@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useCart } from './CartContext';
 
 const ProductDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const { addToCart } = useCart();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -32,6 +35,12 @@ const ProductDetail = () => {
     fetchProduct();
     window.scrollTo(0, 0);
   }, [id]);
+
+  const handleAddToCart = () => {
+    addToCart(product, quantity);
+    // Simple alert for confirmation
+    alert(`${product.name} added to cart!`);
+  };
 
   const formatPrice = (price) => {
     return new Intl.NumberFormat('en-US', {
@@ -184,8 +193,18 @@ const ProductDetail = () => {
                 >+</button>
               </div>
 
-              <button className="flex-1 bg-[#DB4444] text-white h-11 rounded-sm font-medium hover:bg-red-700 transition-all px-8 text-sm">
+              <button 
+                onClick={() => navigate(`/checkout/${product._id}?quantity=${quantity}`)}
+                className="flex-1 bg-black text-white h-11 rounded-sm font-medium hover:bg-gray-800 transition-all px-8 text-sm"
+              >
                 Buy Now
+              </button>
+
+              <button 
+                onClick={handleAddToCart}
+                className="flex-1 bg-[#DB4444] text-white h-11 rounded-sm font-medium hover:bg-red-700 transition-all px-8 text-sm"
+              >
+                Add to Cart
               </button>
 
               <button className="w-11 h-11 flex items-center justify-center border border-gray-400 rounded-sm hover:bg-gray-50 transition-all p-2">

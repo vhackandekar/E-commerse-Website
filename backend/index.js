@@ -9,6 +9,8 @@ const authRoute = require('./routes/auth');
 const productRoute = require('./routes/product');
 const categoryRoute = require('./routes/category');
 const reviewRoute = require('./routes/review');
+const orderRoute = require('./routes/order');
+
 
 dotenv.config();
 
@@ -65,6 +67,8 @@ app.use('/api/auth', authRoute);
 app.use('/api/products', productRoute);
 app.use('/api/categories', categoryRoute);
 app.use('/api/reviews', reviewRoute);
+app.use('/api/orders', orderRoute);
+
 
 app.get('/', (req, res) => {
   res.send("hii");
