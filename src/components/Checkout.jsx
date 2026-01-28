@@ -64,6 +64,7 @@ const Checkout = () => {
                     price: product.price
                 }],
                 totalPrice: product.price * quantity,
+                paymentMethod: formData.paymentMethod,
                 shippingAddress: {
                     name: formData.firstName,
                     company: formData.companyName,
@@ -264,7 +265,7 @@ const Checkout = () => {
                                         type="radio"
                                         name="paymentMethod"
                                         value="bank"
-                                        checked={formData.paymentMethod === 'bank'}
+                                        checked={formData.paymentMethod === 'online'}
                                         onChange={handleChange}
                                         className="w-5 h-5 accent-black"
                                     />
@@ -280,8 +281,8 @@ const Checkout = () => {
                                 <input
                                     type="radio"
                                     name="paymentMethod"
-                                    value="cod"
-                                    checked={formData.paymentMethod === 'cod'}
+                                    value="cash on delivery"
+                                    checked={formData.paymentMethod === 'cash on delivery'}
                                     onChange={handleChange}
                                     className="w-5 h-5 accent-black"
                                 />

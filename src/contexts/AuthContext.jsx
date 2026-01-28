@@ -20,12 +20,30 @@ export const AuthProvider = ({ children }) => {
     // Check if user is logged in on app start
     const token = localStorage.getItem('token');
     if (token) {
-      // You could validate the token here with the backend
-      setIsAuthenticated(true);
-      // For now, we'll just set authenticated state
-      // In a real app, you'd decode the JWT to get user info
+      // Validate the token and fetch user info from the backend
+      const fetchUser = async () => {
+        try {
+          const response = await api.post('/auth/authenticate');
+          if (response.status === 200) {
+            setIsAuthenticated(true);
+            setUser(response.data.user);
+          } else {
+            // Token is invalid, clear it
+            localStorage.removeItem('token');
+          }
+        } catch (error) {
+          console.error('Error fetching user data:', error);
+          // Clear token if authentication fails
+          localStorage.removeItem('token');
+        } finally {
+          setLoading(false);
+        }
+      };
+      
+      fetchUser();
+    } else {
+      setLoading(false);
     }
-    setLoading(false);
   }, []);
 
   const login = (token, userData = null) => {

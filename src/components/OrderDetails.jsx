@@ -96,7 +96,7 @@ const OrderDetails = () => {
           <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
             <h2 className="text-sm font-bold text-gray-900 mb-4 border-b border-gray-50 pb-2 uppercase tracking-wider">Shipping Address</h2>
             <div className="text-sm text-gray-700 space-y-1">
-              <p className="font-bold">{order.shippingAddress?.fullName || 'John Doe'}</p>
+              <p className="font-bold">{order.shippingAddress?.name }</p>
               <p>{order.shippingAddress?.addressLine1 || '123 Street Address'}</p>
               <p>{order.shippingAddress?.city}, {order.shippingAddress?.postalCode}</p>
               <p>{order.shippingAddress?.phone || '+91 00000 00000'}</p>

@@ -39,4 +39,10 @@ const userSchema=new Schema({
 
 });
 
+// Add method to compare passwords
+userSchema.methods.matchPassword = async function (enteredPassword) {
+  const bcrypt = require('bcrypt');
+  return await bcrypt.compare(enteredPassword, this.password);
+};
+
 module.exports=mongoose.model('User',userSchema);

@@ -28,6 +28,12 @@ const orderSchema=new Schema({
         type:Number,
         required:true
     },
+    paymentMethod:{
+        type:String,
+        enum:['cash on delivery','online'],
+        required:true
+    },
+    
     paymentstatus:{
         type:String,
         enum:['pending','paid','failed'],

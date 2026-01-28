@@ -5,7 +5,7 @@ const { updateSalesCount } = require('./product');
 // Create new order
 module.exports.createOrder = async (req, res) => {
     try {
-        const { products, totalPrice, shippingAddress } = req.body;
+        const { products, totalPrice, paymentMethod, shippingAddress } = req.body;
         const userId = req.user.id; // Assuming user is authenticated
 
         // Create new order
@@ -13,6 +13,7 @@ module.exports.createOrder = async (req, res) => {
             user: userId,
             products,
             totalPrice,
+            paymentMethod,
             shippingAddress
         });
 
